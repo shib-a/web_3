@@ -2,6 +2,7 @@ package classes.web_3_new;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import java.util.Objects;
 
 @ManagedBean(name="point")
 @SessionScoped
@@ -63,5 +64,18 @@ public class Point {
                 ", raw_y=" + raw_y +
                 ", hit=" + hit +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Point point = (Point) o;
+        return Double.compare(x, point.x) == 0 && Double.compare(y, point.y) == 0 && Double.compare(r, point.r) == 0 && hit == point.hit && Objects.equals(raw_x, point.raw_x) && Objects.equals(raw_y, point.raw_y);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y, r, raw_x, raw_y, hit);
     }
 }
