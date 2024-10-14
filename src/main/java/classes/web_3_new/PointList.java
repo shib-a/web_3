@@ -8,9 +8,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 
-@Named("pointBean")
-@ManagedBean
-@SessionScoped
+@Named("pointListBean")
+//@ManagedBean
+@ApplicationScoped
 public class PointList {
     private ArrayList<Point> pointList;
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <link rel="stylesheet" href="main_style.css" />
+</head>
+<body>
+<f:view>
+    <h:head>
+<!--        <h:outputStylesheet name="main_style.css"/>-->
+<!--        <head>-->
+<!--            <link rel="style" href="#{request.contextPath}/main_style.css" />-->
+<!--        </head>-->
+<!--        <h:link rel="style" hreflang="main_style.css"/>-->
+    </h:head>
+    <h:body>
+<!--            <div class="base">-->
+
+<!--            </div>-->
+        <h:panelGroup styleClass="base" layout="block">
+            <h:outputLabel value="Hello, #{pointBean.name}"/>
+        </h:panelGroup>
+<!--        </ui:composition>-->
+    </h:body>
+</f:view>
+</body>
+</html>

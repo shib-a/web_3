@@ -1,27 +1,43 @@
 package classes.web_3_new;
 
+import jakarta.inject.Named;
+
 import javax.faces.bean.ManagedBean;
+//import javax.faces.bean.RequestScoped;
+import jakarta.enterprise.context.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import java.util.Objects;
 
-@ManagedBean(name="point")
-@SessionScoped
+
+@Named("pointBean")
+//@ManagedBean
+@RequestScoped
 public class Point {
-    double x;
-    double y;
-    double r;
-    Double raw_x;
-    Double raw_y;
-    boolean hit;
-    public Point(double x, double y, double r, boolean hit, Double raw_x, Double raw_y){
-        this.r = r;
-        this.x = x;
-        this.y = y;
-        this.raw_x=raw_x;
-        this.raw_y = raw_y;
-        this.hit = hit;
+    private double x;
+    private double y;
+    private double r;
+    private Double raw_x;
+    private Double raw_y;
+    private boolean hit;
+    private String name;
+
+    public String getName() {
+        return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    //    public Point(double x, double y, double r, boolean hit, Double raw_x, Double raw_y){
+//        this.r = r;
+//        this.x = x;
+//        this.y = y;
+//        this.raw_x=raw_x;
+//        this.raw_y = raw_y;
+//        this.hit = hit;
+//    }
+//    public Point(){}
     public double getR() {
         return r;
     }
@@ -54,6 +70,31 @@ public class Point {
 //        return hm;
 //    }
 
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public void setHit(boolean hit) {
+        this.hit = hit;
+    }
+
+    public void setR(double r) {
+        this.r = r;
+    }
+
+    public void setRaw_x(Double raw_x) {
+        this.raw_x = raw_x;
+    }
+
+    public void setRaw_y(Double raw_y) {
+        this.raw_y = raw_y;
+    }
+
     @Override
     public String toString() {
         return "Point{" +
@@ -77,5 +118,8 @@ public class Point {
     @Override
     public int hashCode() {
         return Objects.hash(x, y, r, raw_x, raw_y, hit);
+    }
+    public String send(){
+        return "main";
     }
 }
