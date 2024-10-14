@@ -119,7 +119,4 @@ public class Point {
     public int hashCode() {
         return Objects.hash(x, y, r, raw_x, raw_y, hit);
     }
-    public String send(){
-        return "main";
-    }
 }

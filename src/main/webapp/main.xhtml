@@ -21,9 +21,13 @@
 <!--            <div class="base">-->
 
 <!--            </div>-->
+
         <h:panelGroup styleClass="base" layout="block">
             <h:outputLabel value="Hello, #{pointBean.name}"/>
         </h:panelGroup>
+        <h:form>
+        <h:commandButton id="redirectButton" value="Go back" action="index"/>
+        </h:form>
 <!--        </ui:composition>-->
     </h:body>
 </f:view>
