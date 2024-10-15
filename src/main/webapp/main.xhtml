@@ -4,31 +4,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 <head>
-    <link rel="stylesheet" href="main_style.css" />
+    <link rel="stylesheet" href="main_style.css"/>
 </head>
 <body>
 <f:view>
     <h:head>
-<!--        <h:outputStylesheet name="main_style.css"/>-->
-<!--        <head>-->
-<!--            <link rel="style" href="#{request.contextPath}/main_style.css" />-->
-<!--        </head>-->
-<!--        <h:link rel="style" hreflang="main_style.css"/>-->
     </h:head>
     <h:body>
-<!--            <div class="base">-->
+        <h:form id="data" action="get">
+            <div class="q_entry">
+                <div>
+                    <label>Изменение X</label>
+                </div>
+                <p:slider for="ch_x" minValue="-5" maxValue="5" step="1" />
+                <p:inputText id="ch_x" value="#{pointBean.x}"/>
+            </div>
+            <div class="q_entry">
+                <div><label>Изменение Y</label></div>
+                <input type="text" name="ch_y" placeholder="-5..5" id="data_ch_y"/>
+            </div>
+            <div>
 
-<!--            </div>-->
-
+            </div>
+            <div class="q_entry" id='r_choice'>
+                <div>
+                    <label>Изменение R</label>
+                </div>
+                <button type="button" class="r_change">1</button>
+                <button type="button" class="r_change">2</button>
+                <button type="button" class="r_change">3</button>
+                <button type="button" class="r_change">4</button>
+                <button type="button" class="r_change">5</button>
+            </div>
+            <input type="button" id="submit_button" value="Submit"/>
+        </h:form>
+        <!--            <div class="base">-->
+        <!--            </div>-->
         <h:panelGroup styleClass="base" layout="block">
             <h:outputLabel value="Hello, #{pointBean.name}"/>
         </h:panelGroup>
         <h:form>
-        <h:commandButton id="redirectButton" value="Go back" action="index"/>
+            <h:commandButton id="redirectButton" value="Go back" action="index"/>
         </h:form>
-<!--        </ui:composition>-->
     </h:body>
 </f:view>
 </body>

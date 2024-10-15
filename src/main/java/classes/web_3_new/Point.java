@@ -2,10 +2,8 @@ package classes.web_3_new;
 
 import jakarta.inject.Named;
 
-import javax.faces.bean.ManagedBean;
 //import javax.faces.bean.RequestScoped;
 import jakarta.enterprise.context.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import java.util.Objects;
 
 

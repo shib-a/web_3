@@ -4,8 +4,8 @@ package classes.web_3_new;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+//import javax.faces.bean.ManagedBean;
+//import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 
 @Named("pointListBean")
