@@ -14,6 +14,10 @@
     <h:head>
     </h:head>
     <h:body>
+        <div class="base">
+        <header class="main_header">
+            <h1 id="h1">Мартышов Данила Викторович, Р3207, Вариант 409091</h1>
+        </header>
         <h:form id="data" action="get">
             <div class="q_entry">
                 <div>
@@ -24,31 +28,21 @@
             </div>
             <div class="q_entry">
                 <div><label>Изменение Y</label></div>
-                <input type="text" name="ch_y" placeholder="-5..5" id="data_ch_y"/>
-            </div>
-            <div>
-
+                <h:inputText type="text" name="ch_y" placeholder="-5..5" id="data_ch_y" value="#{pointBean.y}"/>
             </div>
             <div class="q_entry" id='r_choice'>
                 <div>
                     <label>Изменение R</label>
                 </div>
-                <button type="button" class="r_change">1</button>
-                <button type="button" class="r_change">2</button>
-                <button type="button" class="r_change">3</button>
-                <button type="button" class="r_change">4</button>
-                <button type="button" class="r_change">5</button>
+                <p:slider for="ch_r" minValue="1" maxValue="4" step="0.25" />
+                <p:inputText id="ch_r" value="#{pointBean.r}"/>
             </div>
             <input type="button" id="submit_button" value="Submit"/>
         </h:form>
-        <!--            <div class="base">-->
-        <!--            </div>-->
-        <h:panelGroup styleClass="base" layout="block">
-            <h:outputLabel value="Hello, #{pointBean.name}"/>
-        </h:panelGroup>
-        <h:form>
+        <h:form id="goBackForm">
             <h:commandButton id="redirectButton" value="Go back" action="index"/>
         </h:form>
+        </div>
     </h:body>
 </f:view>
 </body>

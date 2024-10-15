@@ -8,8 +8,6 @@ drawNotches(context, radius);
 drawHands(context, radius);
 setInterval(drawClock, 12000);
 function drawClock(){
-    drawFace(context,radius);
-    drawNotches(context,radius);
     drawHands(context,radius);
 }
 function drawFace(context, radius){

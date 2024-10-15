@@ -27,10 +27,46 @@
     height: 100%;
     padding: 0;
     margin: 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 body {
     background-color: #ACC8E5;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+.q_entry{
+    text-align: center;
+    width: 85%;
+    height: auto;
+
+    background-color: white;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border-radius: 10px;
+    position: relative;
+    background-attachment: fixed;
+    padding: 5px;
+}
+#data{
+    display: flex;                  /* establish flex container */
+    flex-direction: column;            /* default value; can be omitted */
+    flex-wrap: nowrap;              /* default value; can be omitted */
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    background-attachment: fixed;
+    position: relative;
+    align-items: center;
+}
+#goBackForm{
+    display: flex;                  /* establish flex container */
+    flex-direction: column;            /* default value; can be omitted */
+    flex-wrap: nowrap;              /* default value; can be omitted */
+    justify-content: center;
+    width: 20%;
+    height: auto;
 }
