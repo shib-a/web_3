@@ -2,6 +2,10 @@ package classes.web_3_new;
 
 
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Instance;
+import jakarta.faces.annotation.ManagedProperty;
+import jakarta.faces.context.FacesContext;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 //import javax.faces.bean.ManagedBean;
@@ -22,5 +26,12 @@ public class PointList {
     }
     public ArrayList<Point> getPointList(){
         return pointList;
+    }
+    @Inject
+    private Instance<Point> pointBean;
+    public void handle(){
+        var point = pointBean.get();
+        pointList.add(point);
+        System.out.println(point.toString());
     }
 }

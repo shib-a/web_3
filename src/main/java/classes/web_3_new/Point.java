@@ -58,16 +58,6 @@ public class Point {
     public boolean getHit(){
         return hit;
     }
-//    public HashMap<String, Double> toDumbAssCoords(Double curr_rad){
-//        var svgX = (x*(140/curr_rad));
-//        var svgY = -(y)*(140/curr_rad);
-//        var hm = new HashMap<String, Double>();
-//        hm.put("x", svgX);
-//        hm.put("y",svgY);
-//        System.out.println(hm.get("x")+" "+ hm.get("y"));
-//        return hm;
-//    }
-
 
     public void setY(double y) {
         this.y = y;
@@ -116,5 +106,8 @@ public class Point {
     @Override
     public int hashCode() {
         return Objects.hash(x, y, r, raw_x, raw_y, hit);
+    }
+    public Point getBean(){
+        return this;
     }
 }

@@ -28,7 +28,9 @@
             </div>
             <div class="q_entry">
                 <div><label>Изменение Y</label></div>
-                <h:inputText type="text" name="ch_y" placeholder="-5..5" id="data_ch_y" value="#{pointBean.y}"/>
+                <h:inputText type="text" name="ch_y" placeholder="-5..5" id="data_ch_y" value="#{pointBean.y}">
+                    <f:validateLongRange minimum="-5" maximum="5"/>
+                </h:inputText>
             </div>
             <div class="q_entry" id='r_choice'>
                 <div>
@@ -37,13 +39,37 @@
                 <p:slider for="ch_r" minValue="1" maxValue="4" step="0.25" />
                 <p:inputText id="ch_r" value="#{pointBean.r}"/>
             </div>
-            <input type="button" id="submit_button" value="Submit"/>
+            <h:commandButton id="submit_button" value="Submit" action="#{pointListBean.handle}">
+                <f:ajax execute="@this" render="@form"/>
+            </h:commandButton>
         </h:form>
+            <div id="graph_div">
+            <canvas id="graph" width="400" height="400"></canvas>
+            </div>
+            <h:dataTable id="table" value="#{pointListBean.pointList}" var="point">
+                <h:column>
+                    <f:facet name="header" class="t_d">x</f:facet>
+                    #{point.x}
+                </h:column>
+                <h:column>
+                    <f:facet name="header" class="t_d">y</f:facet>
+                    #{point.y}
+                </h:column>
+                <h:column>
+                    <f:facet name="header" class="t_d">r</f:facet>
+                    #{point.r}
+                </h:column>
+                <h:column>
+                    <f:facet name="header" class="t_d">hit</f:facet>
+                    #{point.hit}
+                </h:column>
+            </h:dataTable>
         <h:form id="goBackForm">
             <h:commandButton id="redirectButton" value="Go back" action="index"/>
         </h:form>
         </div>
     </h:body>
 </f:view>
+<script type="application/javascript" src="graph.js"/>
 </body>
 </html>
