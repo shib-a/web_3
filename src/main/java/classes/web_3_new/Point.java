@@ -1,44 +1,29 @@
 package classes.web_3_new;
-
+import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
-
-//import javax.faces.bean.RequestScoped;
 import jakarta.enterprise.context.RequestScoped;
-import java.util.Objects;
 
+import java.io.Serializable;
+import java.util.Objects;
 
 @Named("pointBean")
 //@ManagedBean
-@RequestScoped
-public class Point {
+@ViewScoped
+public class Point implements Serializable {
     private double x;
     private double y;
     private double r;
     private Double raw_x;
     private Double raw_y;
     private boolean hit;
-    private String name;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    //    public Point(double x, double y, double r, boolean hit, Double raw_x, Double raw_y){
-//        this.r = r;
-//        this.x = x;
-//        this.y = y;
-//        this.raw_x=raw_x;
-//        this.raw_y = raw_y;
-//        this.hit = hit;
-//    }
-//    public Point(){}
     public double getR() {
         return r;
     }
+//    public Point(double x, double y, double r){
+//        this.x=x;
+//        this.y=y;
+//        this.r=r;
+//    }
 
     public Double getRaw_x() {
         return raw_x;
@@ -65,6 +50,7 @@ public class Point {
 
     public void setX(double x) {
         this.x = x;
+        System.out.println(x);
     }
 
     public void setHit(boolean hit) {
@@ -110,4 +96,5 @@ public class Point {
     public Point getBean(){
         return this;
     }
+
 }

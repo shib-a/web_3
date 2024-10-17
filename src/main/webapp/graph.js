@@ -12,28 +12,22 @@ drawLines();
 drawRect();
 drawTriangle();
 drawQuart();
-// $(slider).input(function (){
-//     let rad = height/5*(slider.value);
-//     console.log(rad);
-//     drawRect(rad);
-//     drawQuart(rad);
-//     drawTriangle(rad);
-// })
-slider.addEventListener('slide',function (){
-    let rad = height/5*(slider.value);
-    console.log(rad);
-    drawRect(rad);
-    drawQuart(rad);
-    drawTriangle(rad);
-});
 function redraw(){
+    requestAnimationFrame(animate)
+}
+function animate(){
     let rad = height/5*(inputField.value);
-    console.log(rad);
+    // console.log(rad);
+    context.clearRect(-width/0.9,height/0.9,width/0.9,-height/0.9);
+    context.clearRect(width/0.9,-height/0.9,-width/0.9,height/0.9);
+    context.clearRect(-width/0.9,-height/0.9,width/0.9,height/0.9);
+    context.clearRect(width/0.9,height/0.9,-width/0.9,-height/0.9);
     drawCoords();
     drawLines();
     drawRect(rad);
     drawQuart(rad);
     drawTriangle(rad);
+    // requestAnimationFrame(animate);
 }
 // var r = document.getElementById("ch_r").value
 function drawCoords(){

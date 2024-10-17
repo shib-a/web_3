@@ -23,24 +23,33 @@
                 <div>
                     <label>Изменение X</label>
                 </div>
-                <p:slider for="ch_x" minValue="-5" maxValue="5" step="1" />
-                <p:inputText id="ch_x" value="#{pointBean.x}"/>
+                <p:slider for="ch_x" minValue="-5" maxValue="5" step="1">
+                    <p:ajax process="ch_x"/>
+                </p:slider>
+                <h:inputText id="ch_x" value="#{pointBean.x}">
+                    <f:ajax event="change" render="slider"/>
+                </h:inputText>
             </div>
             <div class="q_entry">
                 <div><label>Изменение Y</label></div>
                 <h:inputText type="text" name="ch_y" placeholder="-5..5" id="data_ch_y" value="#{pointBean.y}">
                     <f:validateLongRange minimum="-5" maximum="5"/>
+                    <f:ajax event="change"/>
                 </h:inputText>
             </div>
             <div class="q_entry" id='r_choice'>
                 <div>
                     <label>Изменение R</label>
                 </div>
-                <p:slider id="ch_r_slider" onSlideEnd="redraw()" for="ch_r" minValue="1" maxValue="4" step="0.25" />
-                <p:inputText id="ch_r" value="#{pointBean.r}"/>
+                <p:slider id="ch_r_slider" onSlideEnd="redraw()" for="ch_r" minValue="1" maxValue="4" step="0.25">
+                    <p:ajax process="ch_r"/>
+                </p:slider>
+                <p:inputText id="ch_r" value="#{pointBean.r}">
+                    <f:ajax event="change" render="ch_r_slider"/>
+                </p:inputText>
             </div>
-            <h:commandButton id="submit_button" value="Submit" action="#{pointListBean.handle}">
-                <f:ajax execute="@this" render="@form"/>
+            <h:commandButton id="submit_button" value="Submit" action="#{pointListBean.handle()}">
+                <f:ajax event="click" render="table"/>
             </h:commandButton>
         </h:form>
             <div id="graph_div">
