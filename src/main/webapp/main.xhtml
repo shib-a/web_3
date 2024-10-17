@@ -36,7 +36,7 @@
                 <div>
                     <label>Изменение R</label>
                 </div>
-                <p:slider for="ch_r" minValue="1" maxValue="4" step="0.25" />
+                <p:slider id="ch_r_slider" onSlideEnd="redraw()" for="ch_r" minValue="1" maxValue="4" step="0.25" />
                 <p:inputText id="ch_r" value="#{pointBean.r}"/>
             </div>
             <h:commandButton id="submit_button" value="Submit" action="#{pointListBean.handle}">
@@ -44,7 +44,7 @@
             </h:commandButton>
         </h:form>
             <div id="graph_div">
-            <canvas id="graph" width="300" height="300"></canvas>
+            <canvas id="graph" width="400" height="400"></canvas>
             </div>
             <h:dataTable id="table" value="#{pointListBean.pointList}" var="point">
                 <h:column>
