@@ -198,7 +198,6 @@ function drawQuart(r){
     context.stroke();
     context.fill();
 }
-
 $(graph).mousedown(function (e) {
     document.getElementById("data:submit_button").disabled=true;
     // let trianglePts = [{},{},{}]
@@ -240,20 +239,32 @@ $(graph).mousedown(function (e) {
 function drawPoints(){
     let table = document.getElementById("table");
     let rows = table.getElementsByTagName('tr');
-    let arr = [];
-    for(var i = 0; i<rows.length;i++){
+    // let arr = [];
+    for(let i = 0; i<rows.length;i++){
         let cells = rows[i].getElementsByTagName('td');
         if (cells[0] != null && cells[1] != null) {
             let x = cells[0].innerText;
             let y = cells[1].innerText;
             // console.log(x, y);
-            arr.push({x, y});
+            // arr.push({x, y});
             let ptCoords = convertToCanvas(x, y);
             console.log(ptCoords[0],ptCoords[1]);
-            context.strokeStyle='red';
+            if(i===rows.length-1){
+                if(cells[3].innerText==='true'){
+                    context.strokeStyle='green';
+                    context.fillStyle='green';
+                }else{
+                    context.strokeStyle='red';
+                    context.fillStyle='red';
+                }
+            }
+            else{
+                context.strokeStyle='grey';
+                context.fillStyle='grey'
+            }
+
             context.beginPath();
             context.arc(ptCoords[0], ptCoords[1], 3, 0, 2 * Math.PI);
-            context.fillStyle='red'
             context.fill();
             // context.stroke();
             console.log("dots drawn")
@@ -262,6 +273,4 @@ function drawPoints(){
 }
 function convertToCanvas(x,y){
     return [(x*height)/5, (-y*height)/5];
-    // return [x/5*height+graph.getBoundingClientRect().left+graph.width/2,y/5*height+graph.getBoundingClientRect().top+graph.width/2]
 }
-// (mouseX - graph.getBoundingClientRect().left - graph.width / 2) / height * 5
