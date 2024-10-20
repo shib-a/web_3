@@ -49,6 +49,7 @@ function drawCoords(){
 }
 function drawLines(){
     context.strokeStyle='black';
+    context.fillStyle='black'
     context.beginPath();
     context.fillText("-1",0, height/5);
     context.moveTo(5,height/5);
