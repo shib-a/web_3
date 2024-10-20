@@ -205,7 +205,7 @@ $(graph).mousedown(function (e) {
     var mouseX = parseFloat(e.clientX);
     var mouseY = parseFloat(e.clientY);
     var seX = (mouseX - graph.getBoundingClientRect().left - graph.width / 2) / height * 5;
-    var seY = (mouseY - graph.getBoundingClientRect().top - graph.height / 2) / height * 5;
+    var seY = -(mouseY - graph.getBoundingClientRect().top - graph.height / 2) / height * 5;
     document.getElementById("data:ch_x").value = seX;
     document.getElementById("data:data_ch_y").value = seY;
     document.getElementById("data:ch_x").dispatchEvent(new Event('change'));
@@ -261,7 +261,7 @@ function drawPoints(){
     }
 }
 function convertToCanvas(x,y){
-    return [(x*height)/5, (y*height)/5];
+    return [(x*height)/5, (-y*height)/5];
     // return [x/5*height+graph.getBoundingClientRect().left+graph.width/2,y/5*height+graph.getBoundingClientRect().top+graph.width/2]
 }
 // (mouseX - graph.getBoundingClientRect().left - graph.width / 2) / height * 5

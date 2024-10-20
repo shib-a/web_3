@@ -51,12 +51,12 @@ public class PointList implements Serializable {
         return checkCircle(x,y,r) || checkRect(x,y,r) || checkTriangle(x,y,r);
     }
     public Boolean checkTriangle(double x, double y, double r){
-        return (x>=0 && y>=0 && x<=r/2 && y<=r && x+y-r<=0);
+        return (x>=0 && y>=0 && x<=r && y<=r/2 && x+y-r<=0);
     }
     public Boolean checkRect(double x, double y, double r){
-        return (x>=r && y<=r && x>=0 && y>=0);
+        return (x>=-r/2 && y<=r && x<=0 && y>=0);
     }
     public Boolean checkCircle(double x, double y, double r){
-        return (Math.pow(x,2) + Math.pow(y,2)< Math.pow(r,2) && x<=0 && y<=0);
+        return ((Math.pow(x,2) + Math.pow(y,2) <= Math.pow(r,2)) && x<=0 && y<=0);
     }
 }
