@@ -2,6 +2,10 @@ package classes.web_3_new;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -9,7 +13,12 @@ import java.util.Objects;
 @Named("pointBean")
 //@ManagedBean
 @ViewScoped
+@Entity
 public class Point implements Serializable {
+    @Id
+    @GeneratedValue
+    @Column(name = "POINT_ID")
+    protected long id;
     private double x;
     private double y;
     private double r;
