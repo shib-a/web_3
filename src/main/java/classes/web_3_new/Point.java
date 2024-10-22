@@ -2,10 +2,7 @@ package classes.web_3_new;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.RequestScoped;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -14,16 +11,16 @@ import java.util.Objects;
 //@ManagedBean
 @ViewScoped
 @Entity
+@Table(name="points")
 public class Point implements Serializable {
     @Id
     @GeneratedValue
-    @Column(name = "POINT_ID")
+//    @GeneratedValue
+//    @Column(name = "POINT_ID")
     protected long id;
     private double x;
     private double y;
     private double r;
-    private Double raw_x;
-    private Double raw_y;
     private boolean hit;
     public double getR() {
         return r;
@@ -34,13 +31,6 @@ public class Point implements Serializable {
 //        this.r=r;
 //    }
 
-    public Double getRaw_x() {
-        return raw_x;
-    }
-
-    public Double getRaw_y() {
-        return raw_y;
-    }
 
     public double getY() {
         return y;
@@ -70,13 +60,6 @@ public class Point implements Serializable {
         this.r = r;
     }
 
-    public void setRaw_x(Double raw_x) {
-        this.raw_x = raw_x;
-    }
-
-    public void setRaw_y(Double raw_y) {
-        this.raw_y = raw_y;
-    }
 
     @Override
     public String toString() {
@@ -84,8 +67,6 @@ public class Point implements Serializable {
                 "x=" + x +
                 ", y=" + y +
                 ", r=" + r +
-                ", raw_x=" + raw_x +
-                ", raw_y=" + raw_y +
                 ", hit=" + hit +
                 '}';
     }
@@ -95,12 +76,12 @@ public class Point implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Point point = (Point) o;
-        return Double.compare(x, point.x) == 0 && Double.compare(y, point.y) == 0 && Double.compare(r, point.r) == 0 && hit == point.hit && Objects.equals(raw_x, point.raw_x) && Objects.equals(raw_y, point.raw_y);
+        return Double.compare(x, point.x) == 0 && Double.compare(y, point.y) == 0 && Double.compare(r, point.r) == 0 && hit == point.hit;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(x, y, r, raw_x, raw_y, hit);
+        return Objects.hash(x, y, r, hit);
     }
     public Point getBean(){
         return this;
