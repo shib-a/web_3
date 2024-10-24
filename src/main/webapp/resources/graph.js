@@ -240,10 +240,9 @@ $(graph).mousedown(function (e) {
 function drawPoints(){
     let table = document.getElementById("table");
     let rows = table.getElementsByTagName('tr');
-    // let arr = [];
     for(let i = 0; i<rows.length;i++){
         let cells = rows[i].getElementsByTagName('td');
-        if (cells[0] != null && cells[1] != null) {
+        if (cells[0] != null && cells[1] != null && r!==0) {
             let x = cells[0].innerText;
             let y = cells[1].innerText;
             // console.log(x, y);
