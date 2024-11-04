@@ -245,8 +245,9 @@ function drawPoints(){
         if (cells[0] != null && cells[1] != null && r!==0) {
             let x = cells[0].innerText;
             let y = cells[1].innerText;
-            // console.log(x, y);
-            // arr.push({x, y});
+            console.log(y)
+            if(y===""){
+                continue;}
             let ptCoords = convertToCanvas(x, y);
             console.log(ptCoords[0],ptCoords[1]);
             if(i===rows.length-1){
@@ -262,7 +263,6 @@ function drawPoints(){
                 context.strokeStyle='grey';
                 context.fillStyle='grey'
             }
-
             context.beginPath();
             context.arc(ptCoords[0], ptCoords[1], 3, 0, 2 * Math.PI);
             context.fill();
@@ -274,3 +274,4 @@ function drawPoints(){
 function convertToCanvas(x,y){
     return [(x*height)/5, (-y*height)/5];
 }
+$("#table").change(function (){redraw()});
