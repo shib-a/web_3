@@ -10,7 +10,7 @@
       <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
       <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
       <property name="jakarta.persistence.jdbc.user" value="postgres"/>
-      <property name="jakarta.persistence.jdbc.password" value="NUTd/6706"/>
+      <property name="jakarta.persistence.jdbc.password" value="password"/>
       <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="eclipselink.ddl-generation" value="create-tables"/> <!-- Auto-create tables -->
       <property name="eclipselink.ddl-generation.output-mode" value="database"/>
