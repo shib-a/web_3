@@ -1,7 +1,6 @@
 package classes.web_3_new;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.*;
 
 import java.io.Serializable;

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Web3" xmlns:ivy="antlib:org.apache.ivy.ant" >
+    <property file="build.properties"/>
+    <property name="java.args" value=""/>
+    <property name="compile.version" value="21"/>
+    <path id="classpath">
+        <fileset dir="${lib.dir}" includes="*.jar"/>
+    </path>
+
+    <taskdef uri="antlib:org.apache.ivy.ant" resource="org/apache/ivy/ant/antlib.xml" classpath="${lib.dir}/ivy-2.5.3.jar"/>
+    <target name="resolve">
+        <ivy:resolve/>
+        <ivy:retrieve pattern="${lib.dir}/[artifact]-[revision](-[classifier]).[ext]"
+                      conf="compile" />
+        <ivy:retrieve pattern="${lib.dir}/[artifact]-[revision](-[classifier]).[ext]"
+                      conf="runtime" />
+        <ivy:retrieve pattern="${lib.dir}/[artifact]-[revision](-[classifier]).[ext]"
+                      conf="test" />
+    </target>
+
+    <target name="compile" depends="resolve, clean-all">
+        <echo message="Compiling..."/>
+        <mkdir dir="${build.classes}"/>
+        <mkdir dir="${test.build.classes}"/>
+        <javac srcdir="${java.dir}" destdir="${build.classes}" includeantruntime="false" classpathref="classpath" source="21" target="21">
+            <classpath>
+                <pathelement path="${lib.dir}"/>
+                <path refid="classpath"/>
+            </classpath>
+            <compilerarg line="${java.args}"/>
+        </javac>
+        <echo message="Compiled main classes"/>
+        <javac srcdir="${test.dir}" destdir="${test.build.classes}" includeantruntime="false">
+            <classpath>
+                <pathelement path="${build.classes}"/>
+                <path refid="classpath"/>
+            </classpath>
+        </javac>
+        <echo message="Compiled test classes"/>
+        <echo message="Compilation complete on version ${compile.version} with args ${java.args}"/>
+    </target>
+
+    <target name="build" depends="compile">
+        <echo message="Building..."/>
+        <mkdir dir="${war.dir}"/>
+        <war webxml="${web.xml}" destfile="${war.dir}/${war.name}">
+            <manifest>
+                <attribute name="Version" value="${version}"/>
+                <attribute name="Descriptor" value="${web.xml}"/>
+            </manifest>
+            <classes dir="${build.classes}"/>
+            <fileset dir="${webapp.dir}"/>
+            <lib dir="${lib.dir}">
+                <exclude name="javaee-api-*"/>
+                <exclude name="javax.*"/>
+            </lib>
+        </war>
+        <echo message="Build complete"/>
+    </target>
+
+    <target name="clean-all" depends="clean-classes, clean-tests">
+        <echo message="Cleaned"/>
+    </target>
+
+    <target name="clean-classes">
+        <echo message="Cleaning classes..."/>
+        <delete dir="${build.classes}"/>
+        <echo message="Cleaned classes"/>
+    </target>
+    <target name="clean-tests">
+        <echo message="Cleaning tests..."/>
+        <delete dir="${test.build.dir}"/>
+        <echo message="Cleaned tests"/>
+    </target>
+
+    <target name="xml">
+        <echo message="Validating xml..."/>
+        <xmlvalidate failonerror="true" warn="true" lenient="false">
+            <fileset dir="${root.dir}" includes="**/*.xml"/>
+        </xmlvalidate>
+        <echo message="XML validation complete"/>
+    </target>
+
+    <target name="test" depends="build">
+        <echo message="Running tests..."/>
+        <mkdir dir="${junit.report.dir}"/>
+        <junitlauncher>
+            <classpath>
+                <pathelement path="${build.classes}"/>
+                <pathelement path="${test.build.classes}"/>
+                <path refid="classpath"/>
+            </classpath>
+            <testclasses outputdir="${junit.report.dir}">
+                <fileset dir="${test.build.classes}" includes="**/*Test.class"/>
+            </testclasses>
+            <listener type="legacy-brief" sendSysOut="true"/>
+        </junitlauncher>
+    </target>
+
+    <target name="env" depends="resolve, clean-all">
+        <echo message="Starting env..."/>
+        <antcall target="build"/>
+        <exec executable="${wildfly.home}/bin/jboss-cli.sh" failonerror="true">
+            <arg value="--connect"/>
+            <arg value="--user=${wildfly.user}"/>
+            <arg value="--password=${wildfly.password}"/>
+            <arg value="--command=undeploy ${war.name}"/>
+        </exec>
+        <exec executable="${wildfly.home}/bin/jboss-cli.sh" failonerror="true">
+            <arg value="--connect"/>
+            <arg value="--user=${wildfly.user}"/>
+            <arg value="--password=${wildfly.password}"/>
+            <arg value="--command=deploy ${war.dir}/${war.name}"/>
+        </exec>
+        <echo message="Deployed successfully"/>
+    </target>
+
+</project>
+<!--8080/9990-->

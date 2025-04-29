@@ -3,13 +3,8 @@ package classes.web_3_new;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.inject.Instance;
-import jakarta.faces.annotation.ManagedProperty;
-import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-
-//import javax.faces.bean.ManagedBean;
-//import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 

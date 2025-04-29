@@ -13,7 +13,7 @@
       <property name="jakarta.persistence.jdbc.password" value="NUTd/6706"/>
       <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="eclipselink.ddl-generation" value="create-tables"/> <!-- Auto-create tables -->
-      <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+      <property name="eclipselink.ddl-generation.output-mode" value="database"
 <!---->
       <property name="eclipselink.defaultSchema" value="web"/>
       <property name="hibernate.show_sql" value="true"/>

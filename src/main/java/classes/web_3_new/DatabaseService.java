@@ -1,14 +1,10 @@
 package classes.web_3_new;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class DatabaseService {
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("classes.web_3_new");
