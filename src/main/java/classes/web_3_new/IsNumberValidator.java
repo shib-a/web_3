@@ -16,6 +16,7 @@ public class IsNumberValidator implements Validator {
         }catch (NumberFormatException e){
             FacesMessage fm = new FacesMessage("Input must only include numbers");
             throw new ValidatorException(fm);
+
         }
     }
 }
